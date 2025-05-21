@@ -22,9 +22,9 @@ $background-color-sidebar: #0A1929;
 $background: #050B13;
 
 // Effects
-$shadow: rgba(0, 0, 0, 0.25) 0px 4px 8px;
-$glow: 0 0 10px rgba(0, 230, 118, 0.2);
-$card-border: 1px solid rgba(0, 230, 118, 0.1);
+$shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+$glow: 0 0 15px rgba(0, 230, 118, 0.3);
+$card-border: 1px solid rgba(0, 230, 118, 0.15);
 
 // Text
 $text-color: #ffffff;
@@ -37,61 +37,92 @@ $border-radius: 8px;
 $border: 1px solid rgba(255, 255, 255, 0.1);
 $margin: 10px;
 
-// Card styles
+// Gaming UI Card styles
 .v-card {
-  background: rgba(30, 42, 59, 0.8) !important;
+  background: linear-gradient(180deg, rgba(30, 42, 59, 0.9) 0%, rgba(10, 25, 41, 0.9) 100%) !important;
   border: $card-border !important;
   backdrop-filter: blur(10px);
   box-shadow: $shadow;
   transition: all 0.3s ease;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%);
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 1px solid transparent;
+    background: linear-gradient(90deg, $primary-color 0%, transparent 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+  }
 
   &:hover {
     border-color: rgba(0, 230, 118, 0.3) !important;
     box-shadow: $glow;
+    
+    &::before {
+      opacity: 0.1;
+    }
   }
 
   .v-card-title {
     color: $text-color;
     font-size: 1.2rem;
-    font-weight: 500;
+    font-weight: 600;
     letter-spacing: 0.5px;
+    text-transform: uppercase;
+    padding: 20px;
+    border-bottom: 1px solid rgba(0, 230, 118, 0.1);
   }
 
   .v-card-subtitle {
     color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+    padding: 16px 20px;
   }
 
   .v-card-text {
     color: rgba(255, 255, 255, 0.9);
+    padding: 20px;
   }
 
   .v-card-actions {
-    padding: 16px;
-    gap: 8px;
+    padding: 16px 20px;
+    gap: 12px;
+    border-top: 1px solid rgba(0, 230, 118, 0.1);
   }
 }
 
-// Button styles
+// Gaming UI Button styles
 .v-btn {
-  text-transform: none;
-  letter-spacing: 0.5px;
-  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+  clip-path: polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%);
+  transition: all 0.3s ease;
 
   &.v-btn--variant-flat {
-    background: $primary-color !important;
+    background: linear-gradient(90deg, $primary-color-dark 0%, $primary-color 100%) !important;
     color: $background-color !important;
+    border: 1px solid rgba(255, 255, 255, 0.1);
     
     &:hover {
-      background: $primary-color-light !important;
+      background: linear-gradient(90deg, $primary-color 0%, $primary-color-light 100%) !important;
+      box-shadow: $glow;
     }
   }
 
   &.v-btn--variant-outlined {
-    border-color: rgba(0, 230, 118, 0.5) !important;
+    border: 1px solid rgba(0, 230, 118, 0.5) !important;
     color: $primary-color !important;
 
     &:hover {
-      background: rgba(0, 230, 118, 0.1) !important;
+      background: rgba(0, 230, 118, 0.15) !important;
+      box-shadow: $glow;
     }
   }
 
@@ -100,80 +131,127 @@ $margin: 10px;
 
     &:hover {
       color: $primary-color !important;
+      text-shadow: 0 0 10px rgba(0, 230, 118, 0.5);
     }
   }
 }
 
-// Input styles
+// Gaming UI Input styles
 .v-text-field {
   .v-field__input {
-    background: rgba(10, 25, 41, 0.6) !important;
-    border: 1px solid rgba(0, 230, 118, 0.1) !important;
+    background: rgba(10, 25, 41, 0.8) !important;
+    border: 1px solid rgba(0, 230, 118, 0.15) !important;
     border-radius: 4px;
     color: $text-color !important;
+    clip-path: polygon(5px 0, 100% 0, calc(100% - 5px) 100%, 0 100%);
 
     &:focus {
-      border-color: rgba(0, 230, 118, 0.3) !important;
+      border-color: rgba(0, 230, 118, 0.4) !important;
       box-shadow: $glow;
     }
   }
 
   .v-label {
     color: rgba(255, 255, 255, 0.7) !important;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
   }
 }
 
-// Select styles
+// Gaming UI Select styles
 .v-select {
   .v-field__input {
-    background: rgba(10, 25, 41, 0.6) !important;
-    border: 1px solid rgba(0, 230, 118, 0.1) !important;
+    background: rgba(10, 25, 41, 0.8) !important;
+    border: 1px solid rgba(0, 230, 118, 0.15) !important;
     border-radius: 4px;
+    clip-path: polygon(5px 0, 100% 0, calc(100% - 5px) 100%, 0 100%);
 
     &:focus {
-      border-color: rgba(0, 230, 118, 0.3) !important;
+      border-color: rgba(0, 230, 118, 0.4) !important;
       box-shadow: $glow;
     }
   }
 }
 
-// List styles
+// Gaming UI List styles
 .v-list {
-  background: rgba(10, 25, 41, 0.9) !important;
+  background: rgba(10, 25, 41, 0.95) !important;
   border: $card-border;
   backdrop-filter: blur(10px);
 
   .v-list-item {
     border-radius: 4px;
     margin: 4px;
+    clip-path: polygon(5px 0, 100% 0, calc(100% - 5px) 100%, 0 100%);
 
     &:hover {
-      background: rgba(0, 230, 118, 0.1) !important;
+      background: rgba(0, 230, 118, 0.15) !important;
     }
 
     &.v-list-item--active {
-      background: rgba(0, 230, 118, 0.2) !important;
+      background: rgba(0, 230, 118, 0.25) !important;
+      border-left: 2px solid $primary-color;
     }
   }
 }
 
-// Dialog styles
+// Gaming UI Dialog styles
 .v-dialog {
   .v-card {
-    background: rgba(10, 25, 41, 0.95) !important;
+    background: linear-gradient(180deg, rgba(30, 42, 59, 0.95) 0%, rgba(10, 25, 41, 0.95) 100%) !important;
     border: $card-border;
     backdrop-filter: blur(15px);
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%);
   }
 }
 
-// Chip styles
+// Gaming UI Chip styles
 .v-chip {
-  background: rgba(30, 42, 59, 0.6) !important;
-  border: 1px solid rgba(0, 230, 118, 0.1);
+  background: rgba(30, 42, 59, 0.8) !important;
+  border: 1px solid rgba(0, 230, 118, 0.15);
   color: rgba(255, 255, 255, 0.9) !important;
+  clip-path: polygon(8px 0, 100% 0, calc(100% - 8px) 100%, 0 100%);
 
   &:hover {
-    border-color: rgba(0, 230, 118, 0.3);
-    background: rgba(30, 42, 59, 0.8) !important;
+    border-color: rgba(0, 230, 118, 0.4);
+    background: rgba(30, 42, 59, 0.9) !important;
+    box-shadow: $glow;
+  }
+}
+
+// Gaming UI Table styles
+.v-table {
+  background: rgba(10, 25, 41, 0.6) !important;
+  border: $card-border;
+  backdrop-filter: blur(10px);
+
+  .v-table__wrapper {
+    > table {
+      > thead {
+        > tr {
+          > th {
+            color: $primary-color !important;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 1px solid rgba(0, 230, 118, 0.15);
+          }
+        }
+      }
+
+      > tbody {
+        > tr {
+          &:hover {
+            background: rgba(0, 230, 118, 0.1) !important;
+          }
+
+          > td {
+            color: rgba(255, 255, 255, 0.9);
+            border-bottom: 1px solid rgba(0, 230, 118, 0.1);
+          }
+        }
+      }
+    }
   }
 }

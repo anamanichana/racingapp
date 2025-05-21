@@ -1,6 +1,7 @@
-$primary-color: #00A3FF;
-$primary-color-light: #4DB8FF;
-$primary-color-dark: #0077CC;
+// Colors
+$primary-color: #00E676;
+$primary-color-light: #69F0AE;
+$primary-color-dark: #00C853;
 $secondary-color: #1E2A3B;
 $secondary-color-light: #2D3F59;
 $secondary-color-dark: #0A1929;
@@ -9,6 +10,7 @@ $negative-color: #FF5252;
 $hud-background: rgba(10, 25, 41, 0.9);
 $hud-background-light: rgba(45, 63, 89, 0.8);
 
+// Base colors
 $background-color: #050B13;
 $background-color-lighter: #0A1929;
 $background-color-even-lighter: #1E2A3B;
@@ -18,11 +20,160 @@ $background-color-inv-dark: #f3f3f3;
 $background-color-topbar: #0A1929;
 $background-color-sidebar: #0A1929;
 $background: #050B13;
+
+// Effects
 $shadow: rgba(0, 0, 0, 0.25) 0px 4px 8px;
+$glow: 0 0 10px rgba(0, 230, 118, 0.2);
+$card-border: 1px solid rgba(0, 230, 118, 0.1);
+
+// Text
 $text-color: #ffffff;
 $text-color-inv: #202020;
 $text-color-disabled: #6B7280;
-$accent-color: #00A3FF;
+$accent-color: #00E676;
+
+// Layout
 $border-radius: 8px;
 $border: 1px solid rgba(255, 255, 255, 0.1);
 $margin: 10px;
+
+// Card styles
+.v-card {
+  background: rgba(30, 42, 59, 0.8) !important;
+  border: $card-border !important;
+  backdrop-filter: blur(10px);
+  box-shadow: $shadow;
+  transition: all 0.3s ease;
+
+  &:hover {
+    border-color: rgba(0, 230, 118, 0.3) !important;
+    box-shadow: $glow;
+  }
+
+  .v-card-title {
+    color: $text-color;
+    font-size: 1.2rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+  }
+
+  .v-card-subtitle {
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .v-card-text {
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .v-card-actions {
+    padding: 16px;
+    gap: 8px;
+  }
+}
+
+// Button styles
+.v-btn {
+  text-transform: none;
+  letter-spacing: 0.5px;
+  font-weight: 500;
+
+  &.v-btn--variant-flat {
+    background: $primary-color !important;
+    color: $background-color !important;
+    
+    &:hover {
+      background: $primary-color-light !important;
+    }
+  }
+
+  &.v-btn--variant-outlined {
+    border-color: rgba(0, 230, 118, 0.5) !important;
+    color: $primary-color !important;
+
+    &:hover {
+      background: rgba(0, 230, 118, 0.1) !important;
+    }
+  }
+
+  &.v-btn--variant-text {
+    color: rgba(255, 255, 255, 0.9) !important;
+
+    &:hover {
+      color: $primary-color !important;
+    }
+  }
+}
+
+// Input styles
+.v-text-field {
+  .v-field__input {
+    background: rgba(10, 25, 41, 0.6) !important;
+    border: 1px solid rgba(0, 230, 118, 0.1) !important;
+    border-radius: 4px;
+    color: $text-color !important;
+
+    &:focus {
+      border-color: rgba(0, 230, 118, 0.3) !important;
+      box-shadow: $glow;
+    }
+  }
+
+  .v-label {
+    color: rgba(255, 255, 255, 0.7) !important;
+  }
+}
+
+// Select styles
+.v-select {
+  .v-field__input {
+    background: rgba(10, 25, 41, 0.6) !important;
+    border: 1px solid rgba(0, 230, 118, 0.1) !important;
+    border-radius: 4px;
+
+    &:focus {
+      border-color: rgba(0, 230, 118, 0.3) !important;
+      box-shadow: $glow;
+    }
+  }
+}
+
+// List styles
+.v-list {
+  background: rgba(10, 25, 41, 0.9) !important;
+  border: $card-border;
+  backdrop-filter: blur(10px);
+
+  .v-list-item {
+    border-radius: 4px;
+    margin: 4px;
+
+    &:hover {
+      background: rgba(0, 230, 118, 0.1) !important;
+    }
+
+    &.v-list-item--active {
+      background: rgba(0, 230, 118, 0.2) !important;
+    }
+  }
+}
+
+// Dialog styles
+.v-dialog {
+  .v-card {
+    background: rgba(10, 25, 41, 0.95) !important;
+    border: $card-border;
+    backdrop-filter: blur(15px);
+  }
+}
+
+// Chip styles
+.v-chip {
+  background: rgba(30, 42, 59, 0.6) !important;
+  border: 1px solid rgba(0, 230, 118, 0.1);
+  color: rgba(255, 255, 255, 0.9) !important;
+
+  &:hover {
+    border-color: rgba(0, 230, 118, 0.3);
+    background: rgba(30, 42, 59, 0.8) !important;
+  }
+}
